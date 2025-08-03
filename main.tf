@@ -76,9 +76,19 @@ resource "azurerm_mssql_firewall_rule" "firewallrule1" {
   end_ip_address   = "0.0.0.0"
 }
 
-# resource "azurerm_app_service_source_control" "appservice" {
-#   app_id                 = azurerm_linux_web_app.azureapp.id
-#   repo_url               = var.repo_url
-#   branch                 = "main"
-#   use_manual_integration = true
-# }
+resource "null_resource" "wait_for_appservice" {
+  depends_on = [azurerm_linux_web_app.azureapp]
+
+  provisioner "local-exec" {
+    command = "sleep 30"
+  }
+}
+
+resource "azurerm_app_service_source_control" "appservice" {
+  app_id                 = azurerm_linux_web_app.azureapp.id
+  repo_url               = var.repo_url
+  branch                 = "main"
+  use_manual_integration = true
+
+  depends_on = [null_resource.wait_for_appservice]
+}
