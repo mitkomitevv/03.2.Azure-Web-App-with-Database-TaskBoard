@@ -1,3 +1,8 @@
+variable "subscription_id" {
+  type        = string
+  description = "Azure Subscription ID"
+}
+
 variable "resource_group_name" {
   description = "The name of the resource group where the resources will be created."
   type        = string
@@ -47,3 +52,4 @@ variable "repo_url" {
   description = "The URL of the Git repository for the App Service source control."
   type        = string
 }
+
