@@ -1,7 +1,7 @@
 resource_group_name     = "Taskboard-RG"
 resource_group_location = "francecentral"
 app_service_plan_name   = "taskboard-sp"
-app_service_name        = "taskboard-app"
+app_service_name        = "taskboard-app-new"
 mssql_server_name       = "taskboard-server"
 mssql_database_name     = "taskboard-db"
 mssql_admin_login       = "sqladmin"
