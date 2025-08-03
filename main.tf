@@ -9,7 +9,7 @@ terraform {
 
 provider "azurerm" {
   features {}
-  subscription_id = "9da9d288-7b53-4ab9-b83e-379053af98f1"
+  subscription_id = var.subscription_id
 }
 
 resource "random_integer" "ri" {
@@ -81,4 +81,5 @@ resource "azurerm_app_service_source_control" "appservice" {
   repo_url               = var.repo_url
   branch                 = "main"
   use_manual_integration = true
+
 }
